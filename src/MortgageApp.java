@@ -10,7 +10,7 @@ public class MortgageApp {
         final byte PERCENT = 100;
         int principal = 0, periodYears = 0, numberOfPayments;
         float annualInterestRate = 0.0F, monthlyInterestRate;
-        double mortgage;
+        double mortgageInt;
 
         Scanner scanner = new Scanner(System.in);
 
@@ -51,7 +51,7 @@ public class MortgageApp {
 
                 if ((periodYears >= 1) && (periodYears <= 30))
                     break;
-                System.out.println("Type in a number from 1 to 30. ");
+                System.out.println("Type in a number from 1 to 30.");
 
             } catch (InputMismatchException e) {
                 System.out.println("Type in a VALID integer number. ");
@@ -60,11 +60,12 @@ public class MortgageApp {
         }
             numberOfPayments = periodYears * MONTH_IN_YEAR;
 
-            mortgage = principal
+            mortgageInt = principal
                     * (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, numberOfPayments))
                     / (Math.pow(1 + monthlyInterestRate, numberOfPayments) - 1);
-            String mortgageFormatted = NumberFormat.getCurrencyInstance().format(mortgage);
-            System.out.println("Mortgage: " + mortgageFormatted);
+
+            String mortgageString = NumberFormat.getCurrencyInstance().format(mortgageInt);
+            System.out.println("Mortgage: " + mortgageString);
 
     }
 }
